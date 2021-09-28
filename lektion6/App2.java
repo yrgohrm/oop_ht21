@@ -13,10 +13,7 @@ public class App2 {
         Rectangle r2 = new Rectangle("blue");
         r2.print();
 
-        Rectangle r3 = new Rectangle();
-        r3.setHeight(1);
-        r3.setWidth(2);
-        r3.setColor("cornflower blue");
+        Rectangle r3 = new Rectangle(1, 2, "cornflower blue");
         r3.print();
     }
 }
