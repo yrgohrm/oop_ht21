@@ -27,6 +27,8 @@ public class IfStmt {
 
 
     public boolean equalsBosse(String str) {
+        // this code is really bad. str.equals("Bosse") is a boolean expression
+        // and we should just return it in one single line without if
         if (str.equals("Bosse")) {
             return true;
         }
