@@ -3,6 +3,8 @@ package se.yrgo.oop.game;
 import java.util.ArrayList;
 import java.util.List;
 
+import se.yrgo.oop.game.things.Thing;
+
 public class Room {
     private String description;
     private List<Room> connectedRooms;

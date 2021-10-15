@@ -1,4 +1,6 @@
-package se.yrgo.oop.game;
+package se.yrgo.oop.game.things;
+
+import se.yrgo.oop.game.Player;
 
 public class CoffePot implements Thing {
     private String owner;

@@ -2,6 +2,11 @@ package se.yrgo.oop.game;
 
 import java.util.Scanner;
 
+import se.yrgo.oop.game.things.BoringThing;
+import se.yrgo.oop.game.things.CoffePot;
+import se.yrgo.oop.game.things.Flower;
+import se.yrgo.oop.game.things.Thing;
+
 /*
 
 Spelare (liv, namn)
@@ -29,17 +34,7 @@ public class App {
         while (true) {
             printRoomInfo(player);
 
-            System.out.println("Vad vill du göra?");
-            String action = scanner.nextLine();
-
-            // byt till 1
-            if (action.startsWith("byt till")) {
-                goToRoom(action, player);
-            }
-            else if (action.startsWith("bruka")) {
-                useThing(action, player);
-            }
-            else if (action.equals("sluta")) {
+            if (!doAction(scanner, player)) {
                 break;
             }
 
@@ -66,10 +61,35 @@ public class App {
 
         Room room3 = new Room("Den fina trädgården");
 
+        Thing flower1 = new Flower("röd");
+        Thing flower2 = new Flower("vit");
+
+        room3.addThing(flower1);
+        room3.addThing(flower2);
+
         room1.addConnectedRoom(room2);
         room1.addConnectedRoom(room3);
 
         return room1;
+    }
+
+    private static boolean doAction(Scanner scanner, Player player) {
+        System.out.println("Vad vill du göra?");
+        String action = scanner.nextLine();
+
+        if (action.startsWith("byt till")) {
+            goToRoom(action, player);
+            System.out.println();
+        }
+        else if (action.startsWith("bruka")) {
+            useThing(action, player);
+            System.out.println();
+        }
+        else if (action.equals("sluta")) {
+            return false;
+        }
+
+        return true;
     }
 
     private static void printRoomInfo(Player player) {
