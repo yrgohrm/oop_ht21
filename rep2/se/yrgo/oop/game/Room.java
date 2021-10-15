@@ -1,6 +1,7 @@
 package se.yrgo.oop.game;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import se.yrgo.oop.game.things.Thing;
@@ -28,7 +29,7 @@ public class Room {
     }
 
     public List<Room> getConnectedRooms() {
-        return connectedRooms;
+        return Collections.unmodifiableList(connectedRooms);
     }
 
     public void addThing(Thing thing) {
@@ -36,6 +37,6 @@ public class Room {
     }
 
     public List<Thing> getThings() {
-        return things;
+        return Collections.unmodifiableList(things);
     }
 }
