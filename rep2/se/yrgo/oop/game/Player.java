@@ -21,4 +21,22 @@ public class Player {
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
+
+    public void increaseHealth(int amount) {
+        if (amount > 0) {
+            health += amount;
+            health = Math.min(health, 100);
+        }
+    }
+
+    public void decreaseHealth(int amount) {
+        if (amount > 0) {
+            health -= amount;
+            health = Math.max(health, 0);
+        }
+    }
+
+    public int getHealth() {
+        return health;
+    }
 }
