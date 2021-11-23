@@ -5,9 +5,18 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class App {
-    public static void main(String[] args) {
+// since we include åäö as a string below we need to specify
+// encoding when compiling
+//
+// javac '-encoding' 'utf-8' .\se\yrgo\swefinder\app\App.java
 
+public class App {
+    public static void main(String[] args) throws IOException {
+        for (String filename : args) {
+            if (isInSwedish(Path.of(filename))) {
+                System.out.println(filename);
+            }
+        }
     }
 
     private static boolean isInSwedish(Path filename) throws IOException {
@@ -27,12 +36,14 @@ public class App {
 
     private static boolean lineContainsSwedishWords(String line) {
         String[] words = line.split("\\W+");
+        int count = 0;
         for (String word : words) {
             if (SwedishWords.isSwedishWord(word)) {
-                return true;
+                count++;
             }
         }
-        return false;
+
+        return count > 2;
     }
 
     private static boolean lineContainsSwedishLetters(String line) {
